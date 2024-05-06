@@ -4,35 +4,36 @@ public class Main {
 
     public static void main(String[] args) {
 		CustomerOperations customerOperations = new CustomerOperations();
+        AccountOperations accountOperations = new AccountOperations();
 
 		while (true) {
 			Menu mainMenu = new Menu("[ Menu Principal ]", Arrays.asList(
-					"Conta",
-					"Cliente",
-					"Operacoes",
-					"Sair"
+                "Conta",
+                "Cliente",
+                "Operacoes",
+                "Sair"
 			));
 
 			Menu accountMenu = new Menu("[ Menu Conta ]", Arrays.asList(
-					"Abrir Conta",
-					"Listar Contas",
-					"Realizar Transacao",
-					"Visualizar Saldo",
-					"Voltar"
+                "Abrir Conta",
+                "Listar Contas",
+                "Realizar Transacao",
+                "Visualizar Saldo",
+                "Voltar"
 			));
 
 			Menu customerMenu = new Menu("[ Menu Cliente ]", Arrays.asList(
-					"Cadastrar Cliente",
-					"Listar Clientes",
-					"Voltar"
+                "Cadastrar Cliente",
+                "Listar Clientes",
+                "Voltar"
 			));
 
 			Menu operationMenu = new Menu("[ Menu Operacoes ]", Arrays.asList(
-					"Depositar",
-					"Sacar",
-					"Transferir",
-					"Gerar Relatorio de Transacoes",
-					"Voltar"
+                "Depositar",
+                "Sacar",
+                "Transferir",
+                "Gerar Relatorio de Transacoes",
+                "Voltar"
 			));
 
 			System.out.println("\n--------------------------------\n");
@@ -41,7 +42,7 @@ public class Main {
 				case 1:
 					System.out.println("\n--------------------------------\n");
 					int accountOption = accountMenu.getSelection();
-					handleAccountOption(accountOption);
+					handleAccountOption(accountOption, accountOperations);
 					break;
 				case 2:
 					System.out.println("\n--------------------------------\n");
@@ -61,13 +62,13 @@ public class Main {
 		}
     }
 
-    private static void handleAccountOption(int option) {
+    private static void handleAccountOption(int option, AccountOperations accountOperations) {
         switch (option) {
             case 1:
-                System.out.println("Cadastrando Conta...");
+                accountOperations.openAccount();
                 break;
             case 2:
-                System.out.println("Listando Contas...");
+                accountOperations.listAccounts();
                 break;
             case 3:
                 System.out.println("Realizando Transacao...");
